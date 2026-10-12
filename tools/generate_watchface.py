@@ -29,7 +29,7 @@ BATTERY_GAP = 10
 TIME_FONT_SIZE = 124
 TIME_Y, TIME_H = 140, 150
 
-COMP_D = 90
+COMP_D = 116
 COMP_Y = 296
 COMP_GAP = 16
 # Inner layout below is drawn for a 78 px circle and scaled to COMP_D.
@@ -135,12 +135,11 @@ def date_condition() -> str:
     </Condition>"""
 
 
-def comp_ring(stroke: str = "#FF3C3C3C") -> str:
+def comp_ring() -> str:
     return f"""\
           <PartDraw x="0" y="0" width="{COMP_D}" height="{COMP_D}">
-            <Ellipse x="1" y="1" width="{COMP_D - 2}" height="{COMP_D - 2}">
+            <Ellipse x="0" y="0" width="{COMP_D}" height="{COMP_D}">
               <Fill color="#FF161616"/>
-              <Stroke color="{stroke}" thickness="2"/>
             </Ellipse>
           </PartDraw>"""
 
@@ -202,7 +201,7 @@ def complication_slot(slot_id: int, name: str, x: float, empty_label: str) -> st
 {image_part(46, 16, "[COMPLICATION.SMALL_IMAGE]", False)}
       </Complication>
       <Complication type="EMPTY">
-{comp_ring("#FF2A2A2A")}
+{comp_ring()}
           <PartText x="4" y="{d // 2 - 14}" width="{d - 8}" height="28">
             <Text align="CENTER">
               <Font family="SYNC_TO_DEVICE" size="{round(15 * K)}" color="#FF7A7A7A">{empty_label}</Font>

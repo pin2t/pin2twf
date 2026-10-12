@@ -37,22 +37,20 @@ public class RenderPreview {
         g.drawString(t, (s - fm.stringWidth(t)) / 2, 140 + 75 + fm.getAscent() / 2 - 14);
 
         // Complications
-        int d = 90, cy = 296;
+        int d = 116, cy = 296;
         int[] xs = {225 - 8 - d, 225 + 8};
         String[][] labels = {{"3", "УФ"}, {"5:00", "Таймер"}};
         for (int i = 0; i < 2; i++) {
             g.setColor(new Color(0x161616));
-            g.fill(new Ellipse2D.Double(xs[i] + 1, cy + 1, d - 2, d - 2));
-            g.setColor(new Color(0x3C3C3C));
-            g.draw(new Ellipse2D.Double(xs[i] + 1, cy + 1, d - 2, d - 2));
+            g.fill(new Ellipse2D.Double(xs[i], cy, d, d));
             g.setColor(Color.WHITE);
-            g.setFont(new Font("SansSerif", Font.BOLD, 24));
+            g.setFont(new Font("SansSerif", Font.BOLD, 31));
             fm = g.getFontMetrics();
-            g.drawString(labels[i][0], xs[i] + (d - fm.stringWidth(labels[i][0])) / 2, cy + 46);
+            g.drawString(labels[i][0], xs[i] + (d - fm.stringWidth(labels[i][0])) / 2, cy + 60);
             g.setColor(new Color(0xB0B0B0));
-            g.setFont(new Font("SansSerif", Font.PLAIN, 15));
+            g.setFont(new Font("SansSerif", Font.PLAIN, 19));
             fm = g.getFontMetrics();
-            g.drawString(labels[i][1], xs[i] + (d - fm.stringWidth(labels[i][1])) / 2, cy + 69);
+            g.drawString(labels[i][1], xs[i] + (d - fm.stringWidth(labels[i][1])) / 2, cy + 89);
         }
         g.dispose();
         ImageIO.write(img, "png", new File(args[0]));

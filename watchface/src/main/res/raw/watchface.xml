@@ -426,184 +426,174 @@
     </DigitalClock>
 
     <!-- UV index (left) and timer (right): tap opens the source app -->
-    <ComplicationSlot slotId="0" displayName="UV" x="127" y="296" width="90" height="90"
+    <ComplicationSlot slotId="0" displayName="UV" x="101" y="296" width="116" height="116"
         supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
       <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY"/>
-      <BoundingOval x="0" y="0" width="90" height="90"/>
+      <BoundingOval x="0" y="0" width="116" height="116"/>
       <Variant mode="AMBIENT" target="alpha" value="0"/>
       <Complication type="SHORT_TEXT">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF3C3C3C" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartImage x="31" y="10" width="28" height="28" tintColor="#FFFFFFFF">
+          <PartImage x="40" y="13" width="36" height="36" tintColor="#FFFFFFFF">
             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
           </PartImage>
-          <PartText x="7" y="36" width="76" height="30">
+          <PartText x="9" y="46" width="98" height="39">
             <Text align="CENTER" ellipsis="TRUE">
-              <Font family="SYNC_TO_DEVICE" size="24" color="#FFFFFFFF" weight="MEDIUM">
+              <Font family="SYNC_TO_DEVICE" size="31" color="#FFFFFFFF" weight="MEDIUM">
                 <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
               </Font>
             </Text>
           </PartText>
-          <PartText x="18" y="62" width="54" height="18">
+          <PartText x="24" y="80" width="68" height="24">
             <Text align="CENTER" ellipsis="TRUE">
-              <Font family="SYNC_TO_DEVICE" size="15" color="#FFB0B0B0" weight="NORMAL">
+              <Font family="SYNC_TO_DEVICE" size="19" color="#FFB0B0B0" weight="NORMAL">
                 <Template>%s<Parameter expression="[COMPLICATION.TITLE]"/></Template>
               </Font>
             </Text>
           </PartText>
       </Complication>
       <Complication type="RANGED_VALUE">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF3C3C3C" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Arc centerX="45" centerY="45" width="84" height="84" startAngle="0" endAngle="360">
-              <Stroke color="#FFFFFFFF" thickness="5" cap="ROUND"/>
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Arc centerX="58" centerY="58" width="110" height="110" startAngle="0" endAngle="360">
+              <Stroke color="#FFFFFFFF" thickness="6" cap="ROUND"/>
               <Transform target="endAngle"
                   value="360 * clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / clamp([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN], 0.0001, 1000000000), 0, 1)"/>
             </Arc>
           </PartDraw>
-          <PartImage x="32" y="13" width="25" height="25" tintColor="#FFFFFFFF">
+          <PartImage x="42" y="16" width="33" height="33" tintColor="#FFFFFFFF">
             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
           </PartImage>
-          <PartText x="9" y="38" width="72" height="30">
+          <PartText x="12" y="49" width="92" height="39">
             <Text align="CENTER" ellipsis="TRUE">
-              <Font family="SYNC_TO_DEVICE" size="23" color="#FFFFFFFF" weight="MEDIUM">
+              <Font family="SYNC_TO_DEVICE" size="30" color="#FFFFFFFF" weight="MEDIUM">
                 <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
               </Font>
             </Text>
           </PartText>
       </Complication>
       <Complication type="MONOCHROMATIC_IMAGE">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF3C3C3C" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartImage x="23" y="23" width="44" height="44" tintColor="#FFFFFFFF">
+          <PartImage x="30" y="30" width="57" height="57" tintColor="#FFFFFFFF">
             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
           </PartImage>
       </Complication>
       <Complication type="SMALL_IMAGE">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF3C3C3C" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartImage x="18" y="18" width="53" height="53">
+          <PartImage x="24" y="24" width="68" height="68">
             <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
           </PartImage>
       </Complication>
       <Complication type="EMPTY">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF2A2A2A" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartText x="4" y="31" width="82" height="28">
+          <PartText x="4" y="44" width="108" height="28">
             <Text align="CENTER">
-              <Font family="SYNC_TO_DEVICE" size="17" color="#FF7A7A7A">УФ</Font>
+              <Font family="SYNC_TO_DEVICE" size="22" color="#FF7A7A7A">УФ</Font>
             </Text>
           </PartText>
       </Complication>
     </ComplicationSlot>
-    <ComplicationSlot slotId="1" displayName="Timer" x="233" y="296" width="90" height="90"
+    <ComplicationSlot slotId="1" displayName="Timer" x="233" y="296" width="116" height="116"
         supportedTypes="SHORT_TEXT RANGED_VALUE MONOCHROMATIC_IMAGE SMALL_IMAGE EMPTY" isCustomizable="TRUE">
       <DefaultProviderPolicy defaultSystemProvider="EMPTY" defaultSystemProviderType="EMPTY"/>
-      <BoundingOval x="0" y="0" width="90" height="90"/>
+      <BoundingOval x="0" y="0" width="116" height="116"/>
       <Variant mode="AMBIENT" target="alpha" value="0"/>
       <Complication type="SHORT_TEXT">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF3C3C3C" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartImage x="31" y="10" width="28" height="28" tintColor="#FFFFFFFF">
+          <PartImage x="40" y="13" width="36" height="36" tintColor="#FFFFFFFF">
             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
           </PartImage>
-          <PartText x="7" y="36" width="76" height="30">
+          <PartText x="9" y="46" width="98" height="39">
             <Text align="CENTER" ellipsis="TRUE">
-              <Font family="SYNC_TO_DEVICE" size="24" color="#FFFFFFFF" weight="MEDIUM">
+              <Font family="SYNC_TO_DEVICE" size="31" color="#FFFFFFFF" weight="MEDIUM">
                 <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
               </Font>
             </Text>
           </PartText>
-          <PartText x="18" y="62" width="54" height="18">
+          <PartText x="24" y="80" width="68" height="24">
             <Text align="CENTER" ellipsis="TRUE">
-              <Font family="SYNC_TO_DEVICE" size="15" color="#FFB0B0B0" weight="NORMAL">
+              <Font family="SYNC_TO_DEVICE" size="19" color="#FFB0B0B0" weight="NORMAL">
                 <Template>%s<Parameter expression="[COMPLICATION.TITLE]"/></Template>
               </Font>
             </Text>
           </PartText>
       </Complication>
       <Complication type="RANGED_VALUE">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF3C3C3C" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Arc centerX="45" centerY="45" width="84" height="84" startAngle="0" endAngle="360">
-              <Stroke color="#FFFFFFFF" thickness="5" cap="ROUND"/>
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Arc centerX="58" centerY="58" width="110" height="110" startAngle="0" endAngle="360">
+              <Stroke color="#FFFFFFFF" thickness="6" cap="ROUND"/>
               <Transform target="endAngle"
                   value="360 * clamp(([COMPLICATION.RANGED_VALUE_VALUE] - [COMPLICATION.RANGED_VALUE_MIN]) / clamp([COMPLICATION.RANGED_VALUE_MAX] - [COMPLICATION.RANGED_VALUE_MIN], 0.0001, 1000000000), 0, 1)"/>
             </Arc>
           </PartDraw>
-          <PartImage x="32" y="13" width="25" height="25" tintColor="#FFFFFFFF">
+          <PartImage x="42" y="16" width="33" height="33" tintColor="#FFFFFFFF">
             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
           </PartImage>
-          <PartText x="9" y="38" width="72" height="30">
+          <PartText x="12" y="49" width="92" height="39">
             <Text align="CENTER" ellipsis="TRUE">
-              <Font family="SYNC_TO_DEVICE" size="23" color="#FFFFFFFF" weight="MEDIUM">
+              <Font family="SYNC_TO_DEVICE" size="30" color="#FFFFFFFF" weight="MEDIUM">
                 <Template>%s<Parameter expression="[COMPLICATION.TEXT]"/></Template>
               </Font>
             </Text>
           </PartText>
       </Complication>
       <Complication type="MONOCHROMATIC_IMAGE">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF3C3C3C" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartImage x="23" y="23" width="44" height="44" tintColor="#FFFFFFFF">
+          <PartImage x="30" y="30" width="57" height="57" tintColor="#FFFFFFFF">
             <Image resource="[COMPLICATION.MONOCHROMATIC_IMAGE]"/>
           </PartImage>
       </Complication>
       <Complication type="SMALL_IMAGE">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF3C3C3C" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartImage x="18" y="18" width="53" height="53">
+          <PartImage x="24" y="24" width="68" height="68">
             <Image resource="[COMPLICATION.SMALL_IMAGE]"/>
           </PartImage>
       </Complication>
       <Complication type="EMPTY">
-          <PartDraw x="0" y="0" width="90" height="90">
-            <Ellipse x="1" y="1" width="88" height="88">
+          <PartDraw x="0" y="0" width="116" height="116">
+            <Ellipse x="0" y="0" width="116" height="116">
               <Fill color="#FF161616"/>
-              <Stroke color="#FF2A2A2A" thickness="2"/>
             </Ellipse>
           </PartDraw>
-          <PartText x="4" y="31" width="82" height="28">
+          <PartText x="4" y="44" width="108" height="28">
             <Text align="CENTER">
-              <Font family="SYNC_TO_DEVICE" size="17" color="#FF7A7A7A">Таймер</Font>
+              <Font family="SYNC_TO_DEVICE" size="22" color="#FF7A7A7A">Таймер</Font>
             </Text>
           </PartText>
       </Complication>
