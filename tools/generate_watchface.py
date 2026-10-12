@@ -3,7 +3,7 @@
 
 The date row ("воскресенье 11.10" + battery icon) shows the day name in the
 watch language. WFF cannot measure text width at runtime, so the row is
-centered for a typical day-name width. Edit the constants below and re-run:
+centered as if the day name were the long Russian "понедельник". Edit the constants below and re-run:
 python3 tools/generate_watchface.py
 """
 from pathlib import Path
@@ -36,12 +36,9 @@ COMP_GAP = 16
 # Inner layout below is drawn for a 78 px circle and scaled to COMP_D.
 K = COMP_D / 78
 
-# Day names used only to estimate the typical width for centering the date row;
+# Day name used only to center the date row (a long one, so longer names fit);
 # the watch renders [DAY_OF_WEEK_F] in its own language.
-TYPICAL_DAYS = [
-    "воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота",
-    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
-]
+REFERENCE_DAY = "понедельник"
 
 # Rough advance widths (in em) of a Google Sans-like font, used to center the date row.
 _WIDE = set("жшщмыюфmwMW")
@@ -100,8 +97,7 @@ def battery_group(x: float, y: float) -> str:
 
 
 def date_row() -> str:
-    day_w = sum(text_width(d, DATE_FONT_SIZE) for d in TYPICAL_DAYS) / len(TYPICAL_DAYS)
-    text_w = day_w + text_width(" 00.00", DATE_FONT_SIZE)
+    text_w = text_width(f"{REFERENCE_DAY} 00.00", DATE_FONT_SIZE)
     row_w = text_w + BATTERY_GAP + BATTERY_W
     text_end = CENTER - row_w / 2 + text_w
     batt_x = text_end + BATTERY_GAP

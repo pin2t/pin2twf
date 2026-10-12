@@ -6,7 +6,7 @@
   <Scene backgroundColor="#FF000000">
 
     <!-- Day of week (watch language) + DD.MM + battery indicator -->
-    <PartText x="0" y="92" width="302" height="44">
+    <PartText x="0" y="92" width="331" height="44">
       <Text align="END" ellipsis="TRUE">
         <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
           <Template>%s %s.%s<Parameter expression="[DAY_OF_WEEK_F]"/><Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
@@ -19,7 +19,7 @@
             <Expression name="low"><![CDATA[[BATTERY_PERCENT] <= 25]]></Expression>
           </Expressions>
           <Compare expression="critical">
-            <PartDraw x="312" y="105" width="40" height="20">
+            <PartDraw x="341" y="105" width="40" height="20">
               <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
                 <Stroke color="#FFFF453A" thickness="2"/>
               </RoundRectangle>
@@ -33,7 +33,7 @@
             </PartDraw>
           </Compare>
           <Compare expression="low">
-            <PartDraw x="312" y="105" width="40" height="20">
+            <PartDraw x="341" y="105" width="40" height="20">
               <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
                 <Stroke color="#FFFFD60A" thickness="2"/>
               </RoundRectangle>
@@ -47,7 +47,7 @@
             </PartDraw>
           </Compare>
           <Default>
-            <PartDraw x="312" y="105" width="40" height="20">
+            <PartDraw x="341" y="105" width="40" height="20">
               <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
                 <Stroke color="#FFFFFFFF" thickness="2"/>
               </RoundRectangle>
