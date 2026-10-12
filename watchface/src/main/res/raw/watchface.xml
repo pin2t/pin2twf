@@ -5,32 +5,21 @@
   <Metadata key="PREVIEW_TIME" value="10:08:32"/>
   <Scene backgroundColor="#FF000000">
 
-    <!-- Day of week (Russian) + DD.MM + battery indicator -->
-    <Condition>
-      <Expressions>
-        <Expression name="d1"><![CDATA[[DAY_OF_WEEK] == 1]]></Expression>
-        <Expression name="d2"><![CDATA[[DAY_OF_WEEK] == 2]]></Expression>
-        <Expression name="d3"><![CDATA[[DAY_OF_WEEK] == 3]]></Expression>
-        <Expression name="d4"><![CDATA[[DAY_OF_WEEK] == 4]]></Expression>
-        <Expression name="d5"><![CDATA[[DAY_OF_WEEK] == 5]]></Expression>
-        <Expression name="d6"><![CDATA[[DAY_OF_WEEK] == 6]]></Expression>
-        <Expression name="d7"><![CDATA[[DAY_OF_WEEK] == 7]]></Expression>
-      </Expressions>
-      <Compare expression="d1">
-        <PartText x="0" y="92" width="328" height="44">
-          <Text align="END">
-            <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
-              <Template>воскресенье %s.%s<Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
-            </Font>
-          </Text>
-        </PartText>
+    <!-- Day of week (watch language) + DD.MM + battery indicator -->
+    <PartText x="0" y="92" width="302" height="44">
+      <Text align="END" ellipsis="TRUE">
+        <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
+          <Template>%s %s.%s<Parameter expression="[DAY_OF_WEEK_F]"/><Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
+        </Font>
+      </Text>
+    </PartText>
         <Condition>
           <Expressions>
             <Expression name="critical"><![CDATA[[BATTERY_PERCENT] <= 10]]></Expression>
             <Expression name="low"><![CDATA[[BATTERY_PERCENT] <= 25]]></Expression>
           </Expressions>
           <Compare expression="critical">
-            <PartDraw x="338" y="105" width="40" height="20">
+            <PartDraw x="312" y="105" width="40" height="20">
               <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
                 <Stroke color="#FFFF453A" thickness="2"/>
               </RoundRectangle>
@@ -44,7 +33,7 @@
             </PartDraw>
           </Compare>
           <Compare expression="low">
-            <PartDraw x="338" y="105" width="40" height="20">
+            <PartDraw x="312" y="105" width="40" height="20">
               <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
                 <Stroke color="#FFFFD60A" thickness="2"/>
               </RoundRectangle>
@@ -58,7 +47,7 @@
             </PartDraw>
           </Compare>
           <Default>
-            <PartDraw x="338" y="105" width="40" height="20">
+            <PartDraw x="312" y="105" width="40" height="20">
               <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
                 <Stroke color="#FFFFFFFF" thickness="2"/>
               </RoundRectangle>
@@ -72,350 +61,6 @@
             </PartDraw>
           </Default>
         </Condition>
-      </Compare>
-      <Compare expression="d2">
-        <PartText x="0" y="92" width="331" height="44">
-          <Text align="END">
-            <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
-              <Template>понедельник %s.%s<Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
-            </Font>
-          </Text>
-        </PartText>
-        <Condition>
-          <Expressions>
-            <Expression name="critical"><![CDATA[[BATTERY_PERCENT] <= 10]]></Expression>
-            <Expression name="low"><![CDATA[[BATTERY_PERCENT] <= 25]]></Expression>
-          </Expressions>
-          <Compare expression="critical">
-            <PartDraw x="341" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFF453A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFF453A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFF453A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Compare expression="low">
-            <PartDraw x="341" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFD60A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFD60A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFD60A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Default>
-            <PartDraw x="341" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFFFFF" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFFFFF"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFFFFF"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Default>
-        </Condition>
-      </Compare>
-      <Compare expression="d3">
-        <PartText x="0" y="92" width="298" height="44">
-          <Text align="END">
-            <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
-              <Template>вторник %s.%s<Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
-            </Font>
-          </Text>
-        </PartText>
-        <Condition>
-          <Expressions>
-            <Expression name="critical"><![CDATA[[BATTERY_PERCENT] <= 10]]></Expression>
-            <Expression name="low"><![CDATA[[BATTERY_PERCENT] <= 25]]></Expression>
-          </Expressions>
-          <Compare expression="critical">
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFF453A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFF453A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFF453A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Compare expression="low">
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFD60A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFD60A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFD60A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Default>
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFFFFF" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFFFFF"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFFFFF"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Default>
-        </Condition>
-      </Compare>
-      <Compare expression="d4">
-        <PartText x="0" y="92" width="281" height="44">
-          <Text align="END">
-            <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
-              <Template>среда %s.%s<Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
-            </Font>
-          </Text>
-        </PartText>
-        <Condition>
-          <Expressions>
-            <Expression name="critical"><![CDATA[[BATTERY_PERCENT] <= 10]]></Expression>
-            <Expression name="low"><![CDATA[[BATTERY_PERCENT] <= 25]]></Expression>
-          </Expressions>
-          <Compare expression="critical">
-            <PartDraw x="291" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFF453A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFF453A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFF453A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Compare expression="low">
-            <PartDraw x="291" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFD60A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFD60A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFD60A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Default>
-            <PartDraw x="291" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFFFFF" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFFFFF"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFFFFF"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Default>
-        </Condition>
-      </Compare>
-      <Compare expression="d5">
-        <PartText x="0" y="92" width="297" height="44">
-          <Text align="END">
-            <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
-              <Template>четверг %s.%s<Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
-            </Font>
-          </Text>
-        </PartText>
-        <Condition>
-          <Expressions>
-            <Expression name="critical"><![CDATA[[BATTERY_PERCENT] <= 10]]></Expression>
-            <Expression name="low"><![CDATA[[BATTERY_PERCENT] <= 25]]></Expression>
-          </Expressions>
-          <Compare expression="critical">
-            <PartDraw x="307" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFF453A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFF453A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFF453A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Compare expression="low">
-            <PartDraw x="307" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFD60A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFD60A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFD60A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Default>
-            <PartDraw x="307" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFFFFF" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFFFFF"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFFFFF"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Default>
-        </Condition>
-      </Compare>
-      <Compare expression="d6">
-        <PartText x="0" y="92" width="298" height="44">
-          <Text align="END">
-            <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
-              <Template>пятница %s.%s<Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
-            </Font>
-          </Text>
-        </PartText>
-        <Condition>
-          <Expressions>
-            <Expression name="critical"><![CDATA[[BATTERY_PERCENT] <= 10]]></Expression>
-            <Expression name="low"><![CDATA[[BATTERY_PERCENT] <= 25]]></Expression>
-          </Expressions>
-          <Compare expression="critical">
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFF453A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFF453A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFF453A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Compare expression="low">
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFD60A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFD60A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFD60A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Default>
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFFFFF" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFFFFF"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFFFFF"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Default>
-        </Condition>
-      </Compare>
-      <Compare expression="d7">
-        <PartText x="0" y="92" width="298" height="44">
-          <Text align="END">
-            <Font family="SYNC_TO_DEVICE" size="30" color="#FFE6E6E6" weight="MEDIUM">
-              <Template>суббота %s.%s<Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
-            </Font>
-          </Text>
-        </PartText>
-        <Condition>
-          <Expressions>
-            <Expression name="critical"><![CDATA[[BATTERY_PERCENT] <= 10]]></Expression>
-            <Expression name="low"><![CDATA[[BATTERY_PERCENT] <= 25]]></Expression>
-          </Expressions>
-          <Compare expression="critical">
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFF453A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFF453A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFF453A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Compare expression="low">
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFD60A" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFD60A"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFD60A"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Compare>
-          <Default>
-            <PartDraw x="308" y="105" width="40" height="20">
-              <RoundRectangle x="1" y="1" width="34" height="18" cornerRadiusX="4" cornerRadiusY="4">
-                <Stroke color="#FFFFFFFF" thickness="2"/>
-              </RoundRectangle>
-              <RoundRectangle x="36" y="6" width="3.5" height="8" cornerRadiusX="1.5" cornerRadiusY="1.5">
-                <Fill color="#FFFFFFFF"/>
-              </RoundRectangle>
-              <Rectangle x="4" y="4" width="28" height="12">
-                <Fill color="#FFFFFFFF"/>
-                <Transform target="width" value="clamp([BATTERY_PERCENT], 0, 100) * 0.28"/>
-              </Rectangle>
-            </PartDraw>
-          </Default>
-        </Condition>
-      </Compare>
-    </Condition>
 
     <!-- Current time -->
     <DigitalClock x="0" y="140" width="450" height="150">

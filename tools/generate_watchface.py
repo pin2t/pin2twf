@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Generates watchface/src/main/res/raw/watchface.xml (Watch Face Format).
 
-The date row ("воскресенье 11.10" + battery icon) is centered per weekday,
-because WFF cannot measure text width at runtime. Edit the constants below
-and re-run:  python3 tools/generate_watchface.py
+The date row ("воскресенье 11.10" + battery icon) shows the day name in the
+watch language. WFF cannot measure text width at runtime, so the row is
+centered for a typical day-name width. Edit the constants below and re-run:
+python3 tools/generate_watchface.py
 """
 from pathlib import Path
 
@@ -35,20 +36,16 @@ COMP_GAP = 16
 # Inner layout below is drawn for a 78 px circle and scaled to COMP_D.
 K = COMP_D / 78
 
-# DAY_OF_WEEK: 1 = Sunday ... 7 = Saturday
-DAYS = {
-    1: "воскресенье",
-    2: "понедельник",
-    3: "вторник",
-    4: "среда",
-    5: "четверг",
-    6: "пятница",
-    7: "суббота",
-}
+# Day names used only to estimate the typical width for centering the date row;
+# the watch renders [DAY_OF_WEEK_F] in its own language.
+TYPICAL_DAYS = [
+    "воскресенье", "понедельник", "вторник", "среда", "четверг", "пятница", "суббота",
+    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+]
 
 # Rough advance widths (in em) of a Google Sans-like font, used to center the date row.
-_WIDE = set("жшщмыюф")
-_NARROW = set("гтсрьз")
+_WIDE = set("жшщмыюфmwMW")
+_NARROW = set("гтсрьзfirtjl")
 
 
 def text_width(s: str, size: float) -> float:
@@ -102,37 +99,22 @@ def battery_group(x: float, y: float) -> str:
         </Condition>"""
 
 
-def date_row(day_name: str) -> str:
-    text_w = text_width(f"{day_name} 00.00", DATE_FONT_SIZE)
+def date_row() -> str:
+    day_w = sum(text_width(d, DATE_FONT_SIZE) for d in TYPICAL_DAYS) / len(TYPICAL_DAYS)
+    text_w = day_w + text_width(" 00.00", DATE_FONT_SIZE)
     row_w = text_w + BATTERY_GAP + BATTERY_W
     text_end = CENTER - row_w / 2 + text_w
     batt_x = text_end + BATTERY_GAP
     batt_y = DATE_Y + (DATE_H - BATTERY_H) / 2 + 1
     return f"""\
-        <PartText x="0" y="{DATE_Y}" width="{text_end:.0f}" height="{DATE_H}">
-          <Text align="END">
-            <Font family="SYNC_TO_DEVICE" size="{DATE_FONT_SIZE}" color="{DATE_COLOR}" weight="MEDIUM">
-              <Template>{day_name} %s.%s<Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
-            </Font>
-          </Text>
-        </PartText>
+    <PartText x="0" y="{DATE_Y}" width="{text_end:.0f}" height="{DATE_H}">
+      <Text align="END" ellipsis="TRUE">
+        <Font family="SYNC_TO_DEVICE" size="{DATE_FONT_SIZE}" color="{DATE_COLOR}" weight="MEDIUM">
+          <Template>%s %s.%s<Parameter expression="[DAY_OF_WEEK_F]"/><Parameter expression="[DAY_Z]"/><Parameter expression="[MONTH_Z]"/></Template>
+        </Font>
+      </Text>
+    </PartText>
 {battery_group(batt_x, batt_y)}"""
-
-
-def date_condition() -> str:
-    exprs = "\n".join(
-        f'        <Expression name="d{n}"><![CDATA[[DAY_OF_WEEK] == {n}]]></Expression>' for n in DAYS
-    )
-    compares = "\n".join(
-        f'      <Compare expression="d{n}">\n{date_row(name)}\n      </Compare>' for n, name in DAYS.items()
-    )
-    return f"""\
-    <Condition>
-      <Expressions>
-{exprs}
-      </Expressions>
-{compares}
-    </Condition>"""
 
 
 def comp_ring() -> str:
@@ -222,8 +204,8 @@ def build() -> str:
   <Metadata key="PREVIEW_TIME" value="10:08:32"/>
   <Scene backgroundColor="#FF000000">
 
-    <!-- Day of week (Russian) + DD.MM + battery indicator -->
-{date_condition()}
+    <!-- Day of week (watch language) + DD.MM + battery indicator -->
+{date_row()}
 
     <!-- Current time -->
     <DigitalClock x="0" y="{TIME_Y}" width="{SIZE}" height="{TIME_H}">

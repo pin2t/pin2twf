@@ -4,13 +4,13 @@ A [Watch Face Format](https://developer.android.com/training/wearables/wff) watc
 (resource-only APK, no code — the only kind Wear OS 6+/7 accepts):
 
 ```
-     воскресенье 11.10 ▭      ← day in Russian + DD.MM + battery icon
+     воскресенье 11.10 ▭      ← day in watch language + DD.MM + battery icon
           10:08               ← time, 24h
        ( УФ )  (Таймер)       ← tappable complications: UV index, timer
 ```
 
 * **Battery icon** fill shows the charge level. Color: **red** ≤ 10 %, **yellow** ≤ 25 %, **white** otherwise.
-* **Day name is always Russian**, whatever the watch language is.
+* **Day name follows the watch language** (Settings → System → Languages).
 * **UV / timer** are complication slots: they show live data, and a tap opens the source app.
 * In always-on (ambient) mode the complications are hidden and the time is dimmed.
 
